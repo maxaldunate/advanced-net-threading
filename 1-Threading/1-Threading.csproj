@@ -44,9 +44,9 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncDelegateExample1.cs" />
-    <Compile Include="Overhead.cs" />
-    <Compile Include="Responsiveness.cs" />
+    <Compile Include="samples\AsyncDelegateExample1.cs" />
+    <Compile Include="samples\Overhead.cs" />
+    <Compile Include="samples\Responsiveness.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

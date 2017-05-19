@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 public static class Program {
    public static void Main() {
 
-       Overhead.Run();
-       AsyncDelegateExample1.Main();
+       //Overhead.Run();
+       //AsyncDelegateExample1.Main();
       
        Responsiveness.Run();
 
