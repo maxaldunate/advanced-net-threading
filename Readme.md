@@ -1,5 +1,7 @@
 # Advanced .NET Threading  
 [MVA](https://mva.microsoft.com/en-us/training-courses/advanced--net-threading-part-1-thread-fundamentals-16656)  
+Copyright (c) by Jeffrey Richter  
+from Wintellect
 
 ## Part 1: Thread Fundamentals
 
@@ -35,6 +37,20 @@
 * Garbage collector: suspend all threads
 
 ### Thread Scheculing
+
+* Reasons to use threading ... cpu time left
+* Visual studio compiling during type
+* File indexing when search in windows 
+* Consider battery usage & heat 
+* Spell checking & defragment disk
+* Thread Sleep example vs Timer at the thread pool
+
+### Threads Priorities
+
+* Values: Highest, AboveNormal, Normal, BelowNormal, Lowest
+* Lowest for long running tasks threads
+* Avoid raising a thread's priority
+
 
 
 

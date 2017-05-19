@@ -8,15 +8,13 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-
-public static class Threading {
+public static class Program {
    public static void Main() {
 
+       Overhead.Run();
        AsyncDelegateExample1.Main();
-
-
-      ThreadOverhead();
-      //Responsiveness();
+      
+       Responsiveness.Run();
 
       //CalcMaxActiveThreads(1, true);
       //CalcMaxActiveThreads(3, true);
@@ -24,57 +22,6 @@ public static class Threading {
 
       //FirstAsyncFunction();
    }
-
-   private static void Metodo(string arg)
-   {
-       for (int i = 0; i < 50; i++)
-       {
-           Console.WriteLine("Metodo " + i);
-       }
-   }
-
-
-   private static void ThreadOverhead() {
-
-      const Int32 OneMB = 1024 * 1024;
-      using (var wakeThreads = new ManualResetEvent(false)) {
-         Int32 threadNum = 0;
-         try {
-            while (true) {
-               var t = new Thread(WaitOnEvent);
-               t.Start(wakeThreads);
-               Console.WriteLine("{0}: {1}MB", ++threadNum,
-                  Process.GetCurrentProcess().PrivateMemorySize64 / OneMB);
-            }
-         }
-         catch (OutOfMemoryException) {
-            Console.WriteLine("Out of memory after {0} threads.", threadNum);
-            Debugger.Break();
-            wakeThreads.Set();   // Release all the threads
-         }
-      }
-   }
-
-   private static void WaitOnEvent(Object eventObj) {
-      ((ManualResetEvent)eventObj).WaitOne();
-      Console.WriteLine("finishing");
-   }
-
-
-   #region Prioirty Properties & System Responsiveness
-   private static void InfiniteLoop(Object o) {
-      Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-      while (true) ;
-   }
-
-   private static void Responsiveness() {
-      for (Int32 thread = 0; thread < Environment.ProcessorCount; thread++)
-         new Thread(InfiniteLoop).Start();
-      Thread.Sleep(30000);
-      Debugger.Break();
-      Console.ReadLine();
-   }
-   #endregion
 
    #region Thread Pool Threads
    private const Int32 c_ItemsToProcess = 200;
@@ -148,7 +95,6 @@ public static class Threading {
    }
    #endregion
 }
-
 
 
 //CalcMaxActiveThreads((IntPtr)7, true);
