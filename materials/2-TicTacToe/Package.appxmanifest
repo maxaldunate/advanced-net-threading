@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="Wintellect.Demos.TicTacToe" Publisher="CN=Jeffrey" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>TicTacToe &amp; Draw</DisplayName>
+    <PublisherDisplayName>Jeffrey</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="App.App">
+      <VisualElements DisplayName="Tic-Toe-Toe &amp; Draw" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Tic-Tac-Toe &amp; Draw using awaitable events" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+</Package>
