@@ -8,8 +8,13 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 public static class Threading {
    public static void Main() {
+
+       AsyncDelegateExample1.Main();
+
+
       ThreadOverhead();
       //Responsiveness();
 
@@ -19,6 +24,15 @@ public static class Threading {
 
       //FirstAsyncFunction();
    }
+
+   private static void Metodo(string arg)
+   {
+       for (int i = 0; i < 50; i++)
+       {
+           Console.WriteLine("Metodo " + i);
+       }
+   }
+
 
    private static void ThreadOverhead() {
 
