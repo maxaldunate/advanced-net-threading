@@ -43,6 +43,7 @@ public static class Threading {
 
    private static void WaitOnEvent(Object eventObj) {
       ((ManualResetEvent)eventObj).WaitOne();
+      Console.WriteLine("finishing");
    }
 
 

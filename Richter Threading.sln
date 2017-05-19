@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-Volatile", "3-Volatile\3-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-Synchronization", "4-Synchronization\4-Synchronization.csproj", "{4E602E9E-1956-4D78-A0BD-194256535935}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{EAD29563-C7EB-4EA3-AFCF-68E68203D7EC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +39,9 @@ Global
 		{8F8BB4AB-057B-42E6-A265-0ABC257796CB}.Release|ARM.ActiveCfg = Release|Any CPU
 		{8F8BB4AB-057B-42E6-A265-0ABC257796CB}.Release|x64.ActiveCfg = Release|Any CPU
 		{8F8BB4AB-057B-42E6-A265-0ABC257796CB}.Release|x86.ActiveCfg = Release|Any CPU
-		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.Build.0 = Debug|x64
-		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|ARM.ActiveCfg = Debug|ARM
 		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|ARM.Build.0 = Debug|ARM
 		{8B0F7FF0-0231-447E-9F81-E2271A3938C8}.Debug|ARM.Deploy.0 = Debug|ARM

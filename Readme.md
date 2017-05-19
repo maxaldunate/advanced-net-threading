@@ -26,7 +26,27 @@
    Details add threads column
    Memmory: working set, peak, delta, shared & private 
 
-### Creating a thread
+### Demo. Thread Overhead
+
+* 1510 thread per process... bad question
+* run without start
+* many time spent on start
+* F10 debbuger feature: suspend all threads
+* Garbage collector: suspend all threads
+
+### Thread Scheculing
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
