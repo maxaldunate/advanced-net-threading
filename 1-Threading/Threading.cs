@@ -11,22 +11,23 @@ using System.Threading.Tasks;
 public static class Threading {
    public static void Main() {
       ThreadOverhead();
-      Responsiveness();
+      //Responsiveness();
 
-      CalcMaxActiveThreads(1, true);
-      CalcMaxActiveThreads(3, true);
-      CalcMaxActiveThreads(1, false);
+      //CalcMaxActiveThreads(1, true);
+      //CalcMaxActiveThreads(3, true);
+      //CalcMaxActiveThreads(1, false);
 
-      FirstAsyncFunction();
+      //FirstAsyncFunction();
    }
 
    private static void ThreadOverhead() {
+
       const Int32 OneMB = 1024 * 1024;
-      using (ManualResetEvent wakeThreads = new ManualResetEvent(false)) {
+      using (var wakeThreads = new ManualResetEvent(false)) {
          Int32 threadNum = 0;
          try {
             while (true) {
-               Thread t = new Thread(WaitOnEvent);
+               var t = new Thread(WaitOnEvent);
                t.Start(wakeThreads);
                Console.WriteLine("{0}: {1}MB", ++threadNum,
                   Process.GetCurrentProcess().PrivateMemorySize64 / OneMB);
