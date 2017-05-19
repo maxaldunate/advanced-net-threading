@@ -2,7 +2,6 @@
 Module:  Threading.cs
 Notices: Copyright (c) by Jeffrey Richter and Wintellect
 ******************************************************************************/
-
 using System;
 using System.Diagnostics;
 using System.Net.Http;
