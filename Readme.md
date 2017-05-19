@@ -17,9 +17,16 @@
    kernel-mode 12KB/24KB  
 * DLL thread attach/detach notifications  
 * Performance impact not just switch contect more for invalidate all cpu cache each time
+* Looks like all at same time but quantum time... 30 milliseconds
+* Most thread are waiting... so waste space but not time, are waiting for  
+   keyboard, mouse, network, file inputs, etc.  
+* Task Manager  
+   Cores & Logical processors  
+   Processes & Threads  
+   Details add threads column
+   Memmory: working set, peak, delta, shared & private 
 
-### Windows Schedules Threads
-
+### Creating a thread
 
 
 
