@@ -51,6 +51,14 @@ from Wintellect
 * Lowest for long running tasks threads
 * Avoid raising a thread's priority
 
+### WinRT Threading APIs & Windows Store Apps
+
+* WinRT APIs not have dedicated threads, no sleep & no change priority
+* WinRT have Windows.System.thread with ThreadPool & ThreadPoolTimer
+* Background Win Store apps have all thread suspended (batt & foregrounf app improve)
+
+## Part 2: Compute-Bound Async O ...
+
 
 
 
