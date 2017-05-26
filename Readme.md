@@ -1,9 +1,9 @@
 # Advanced .NET Threading  
-[MVA](https://mva.microsoft.com/en-us/training-courses/advanced--net-threading-part-1-thread-fundamentals-16656)  
 Copyright (c) by Jeffrey Richter  
 from Wintellect
 
 ## Part 1: Thread Fundamentals
+[MVA Part 1](https://mva.microsoft.com/en-us/training-courses/advanced--net-threading-part-1-thread-fundamentals-16656)  
 
 ### Introduction
 
@@ -57,10 +57,27 @@ from Wintellect
 * WinRT have Windows.System.thread with ThreadPool & ThreadPoolTimer
 * Background Win Store apps have all thread suspended (batt & foregrounf app improve)
 
-## Part 2: Compute-Bound Async O ...
+
+## Part 2: Compute-Bound Async Operations  
+[MVA Part 2](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-2-computebound-async-operations-16658?l=fG7K1fitC_2206218965)  
 
 
 
+
+
+## Part 3: I/O-Bound Async Operations  
+[MVA Part 3](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-3-iobound-async-operations-16659?l=DLvEmkitC_4406218965)  
+
+
+## Part 4: Thread Synchronization Primitives  
+[MVA Part 4](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-4-thread-synchronization-primitives-16660?l=1oGCZnitC_8406218965)  
+
+
+## Part 5: Thread Synchronization Locks
+[MVA Part 5](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-5-thread-synchronization-locks-16661?l=A3VXnpitC_9006218965)  
+
+
+The End
 
 
 
