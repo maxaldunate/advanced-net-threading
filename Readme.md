@@ -115,10 +115,10 @@ t.Start();
 t.ContinueWith(t => Console.WriteLine(t.Result),
 		TaskContinuationOptions.OnlyOnRanToCompletion);
 //Exception
-t.ContinueWith(t => Console.WriteLine(t.Result),
+t.ContinueWith(t => Console.WriteLine(t.Exception),
 		TaskContinuationOptions.OnlyOnFaulted);
 //Cancellation
-t.ContinueWith(t => Console.WriteLine(t.Result),
+t.ContinueWith(t => Console.WriteLine("Canceled"),
 		TaskContinuationOptions.OnlyOnCanceled);
 ```
 
