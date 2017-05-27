@@ -44,9 +44,10 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="samples\AsyncDelegateExample1.cs" />
-    <Compile Include="samples\Overhead.cs" />
-    <Compile Include="samples\Responsiveness.cs" />
+    <Compile Include="samples\Part1_AsyncDelegateExample1.cs" />
+    <Compile Include="samples\Part1_Overhead.cs" />
+    <Compile Include="samples\Part2_CalcMaxActiveThreads.cs" />
+    <Compile Include="samples\Part1_Responsiveness.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
