@@ -78,12 +78,31 @@ Affinity ... bit mask to use specific cores
 Stopwatch ... accurately measure elapsed time  
 Interlocked ... Increment/Decrement/CompareExchange  
 AutoResetEvent ... notifies a waiting thread that an event has occurred  
-ProcessorAffinity ...  
+ProcessorAffinity ...  doesen't work
 [ProcessorAffinity](https://stackoverflow.com/questions/2510593/how-can-i-set-processor-affinity-in-net)  
 ** Putting a thread to sleep vs making threads to work throu TickCount **  
 If the sleep time increase ... you will have a greater number of threads  
 
 ### The standard cooperative cancellation pattern  
+CancellationTokenSource & ThreadPool.QueueUserWorkItem
+
+### System.Threading.Tasks or Tasks Parallel Library  
+```csharp
+// Two equivalents lines
+new Task(Compute, 5).Start();
+ThreadPool.QueueUserWorkItem(Compute, 5);
+
+Task<Int32> t = new Task<Int32>(Compute, 5);  //Int32 return type instead of void  
+t.Start();  
+
+//Block current thread waiting
+t.Wait(); //overloads accept timeout/CancellationToken
+
+t.Result //Get the result (Int32) & calls wait internally
+
+// There are static methods WaitAll & WaitAny returned Task[]
+```
+
 
 
 
