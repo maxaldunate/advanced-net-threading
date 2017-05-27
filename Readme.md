@@ -108,7 +108,7 @@ t.Result //Get the result (Int32) & calls wait internally
 
 * Automatically Starting a New Task when another Task Completes
 
-```csharp
+```cs
 var t = new Task<Int32>(Compute, 5);
 t.Start();
 //Ok
