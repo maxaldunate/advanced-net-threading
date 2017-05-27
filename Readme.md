@@ -87,13 +87,16 @@ If the sleep time increase ... you will have a greater number of threads
 CancellationTokenSource & ThreadPool.QueueUserWorkItem
 
 ### System.Threading.Tasks or Tasks Parallel Library  
+
+* Getting a Task's Result  
+
 ```csharp
 // Two equivalents lines
 new Task(Compute, 5).Start();
 ThreadPool.QueueUserWorkItem(Compute, 5);
 
 Task<Int32> t = new Task<Int32>(Compute, 5);  //Int32 return type instead of void  
-t.Start();  
+t.Start();  // Starts the task sometime later (puts the task in the queue)
 
 //Block current thread waiting
 t.Wait(); //overloads accept timeout/CancellationToken
@@ -103,6 +106,21 @@ t.Result //Get the result (Int32) & calls wait internally
 // There are static methods WaitAll & WaitAny returned Task[]
 ```
 
+* Automatically Starting a New Task when another Task Completes
+
+```csharp
+var t = new Task<Int32>(Compute, 5);
+t.Start();
+//Ok
+t.ContinueWith(t => Console.WriteLine(t.Result),
+		**TaskContinuationOptions.OnlyOnRanToCompletion);
+//Exception
+t.ContinueWith(t => Console.WriteLine(t.Result),
+		**TaskContinuationOptions.OnlyOnFaulted);
+//Cancellation
+t.ContinueWith(t => Console.WriteLine(t.Result),
+		**TaskContinuationOptions.OnlyOnCanceled);
+```
 
 
 
