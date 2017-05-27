@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 public static class Threading {
    public static void Main() {
-      ThreadOverhead();
-      Responsiveness();
+      //ThreadOverhead();
+      //Responsiveness();
 
       CalcMaxActiveThreads(1, true);
       CalcMaxActiveThreads(3, true);
       CalcMaxActiveThreads(1, false);
 
-      FirstAsyncFunction();
+      //FirstAsyncFunction();
    }
 
    #region Thread Overhead

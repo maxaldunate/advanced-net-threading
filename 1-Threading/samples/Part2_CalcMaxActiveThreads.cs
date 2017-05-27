@@ -42,6 +42,7 @@ public static class Part2_CalcMaxActiveThreads
         Boolean computeBound = (Boolean)state;
         if (computeBound)
         {
+            //Simulate a kind of computation of 100 milisencods
             for (Int64 stop = 100 + Environment.TickCount; Environment.TickCount < stop; ) ;
         }
         else { Thread.Sleep(100); }

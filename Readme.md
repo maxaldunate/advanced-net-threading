@@ -74,8 +74,16 @@ from Wintellect
 If work items queue quickly, more threads are created  
 If work items reduce, TP threads sit idle  
 
+Affinity ... bit mask to use specific cores  
+Stopwatch ... accurately measure elapsed time  
+Interlocked ... Increment/Decrement/CompareExchange  
+AutoResetEvent ... notifies a waiting thread that an event has occurred  
+ProcessorAffinity ...  
+[ProcessorAffinity](https://stackoverflow.com/questions/2510593/how-can-i-set-processor-affinity-in-net)  
+** Putting a thread to sleep vs making threads to work throu TickCount **  
+If the sleep time increase ... you will have a greater number of threads  
 
-
+### The standard cooperative cancellation pattern  
 
 
 
@@ -105,16 +113,3 @@ If work items reduce, TP threads sit idle
 
 
 The End
-
-
-
-
-
-
-
-
-
-
-
-
-
