@@ -61,6 +61,33 @@ from Wintellect
 ## Part 2: Compute-Bound Async Operations  
 [MVA Part 2](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-2-computebound-async-operations-16658?l=fG7K1fitC_2206218965)  
 
+### Don't block threads **  
+* You tempted to create more threads  
+* Garbagge collector have to suspend all threads  
+* Degrade debugging performance  
+* Avoid blocking threads ... by performing asynchronous operations  
+	* Compute bound  
+	* I/O bound
+
+### The CLR's thread pool  
+
+If work items queue quickly, more threads are created  
+If work items reduce, TP threads sit idle  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

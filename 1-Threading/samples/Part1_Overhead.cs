@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-public static class Overhead
+public static class Part1_Overhead
 {
     public static void Run()
     {

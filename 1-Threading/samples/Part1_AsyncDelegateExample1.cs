@@ -7,7 +7,7 @@ using System.Threading;
 
 public delegate void myDelegate();
 
-public class AsyncDelegateExample1
+public class Part1_AsyncDelegateExample1
 {
     public static void Main()
     {

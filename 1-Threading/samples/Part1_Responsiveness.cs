@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-public static class Responsiveness
+public static class Part1_Responsiveness
 {
     public static void Run()
     {

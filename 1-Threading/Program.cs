@@ -11,10 +11,9 @@ using System.Threading.Tasks;
 public static class Program {
    public static void Main() {
 
-       //Overhead.Run();
-       //AsyncDelegateExample1.Main();
-      
-       Responsiveness.Run();
+       Part1_Overhead.Run();
+       Part1_AsyncDelegateExample1.Main();
+       Part1_Responsiveness.Run();
 
       //CalcMaxActiveThreads(1, true);
       //CalcMaxActiveThreads(3, true);
