@@ -113,13 +113,13 @@ var t = new Task<Int32>(Compute, 5);
 t.Start();
 //Ok
 t.ContinueWith(t => Console.WriteLine(t.Result),
-		**TaskContinuationOptions.OnlyOnRanToCompletion);
+		TaskContinuationOptions.OnlyOnRanToCompletion);
 //Exception
 t.ContinueWith(t => Console.WriteLine(t.Result),
-		**TaskContinuationOptions.OnlyOnFaulted);
+		TaskContinuationOptions.OnlyOnFaulted);
 //Cancellation
 t.ContinueWith(t => Console.WriteLine(t.Result),
-		**TaskContinuationOptions.OnlyOnCanceled);
+		TaskContinuationOptions.OnlyOnCanceled);
 ```
 
 
