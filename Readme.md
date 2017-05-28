@@ -127,11 +127,10 @@ t.ContinueWith(t => Console.WriteLine("Canceled"),
 Tasks can return a value, Int32 in the example. So cancellations throws an exception.  
 ```cs
 private static Int32 Compute(Object state) {
-	CacellationToken ct = (CancellationToken) state;
-	Int32 result = 0;
-	for (Int32 n =0; n < 10000; n++) {
+	var ct = (CancellationToken) state;
+	var result = 0;
+	for (var n = 0; n < 10000; n++) {
 		ct.ThrowIfCacellationRequested();
-	
 		// Do work here ...
 	}
 	return result;
@@ -140,11 +139,10 @@ private static Int32 Compute(Object state) {
 
 * A task may start a child tasks
 ```cs
-Task<Int32[]> parent = new Task<Int32[]>( () => {
+var parent = new Task<Int32[]>( () => {
 	var results = new Int32[2];
-
-	new Task(() => results[0] = Sum(10000).Start();
-	new Task(() => results[1] = Sum(20000).Start();
+	new Task(() => results[0] = Sum(10000)).Start();
+	new Task(() => results[1] = Sum(20000)).Start();
 	return results;
 });
 parent.Start();
