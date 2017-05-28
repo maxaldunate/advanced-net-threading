@@ -151,6 +151,47 @@ parent.Start();
 parent.ContinueWith(t => Array.ForEach(t.Result, r => m_lb.Items.Add(r)));
 ```
 
+Solution with no threads blocking
+AttachedToParent flag increments the counter at the parent task
+```cs
+	new Task(() => results[0] = Sum(10000),
+		TaskCreationOptions.AttachedToParent).Start();
+```
+
+GUI thread can manipulate m_lb UI element
+Run at the other thread
+```cs
+var ts = TaskScheduler.FromCurrentSynchronizationContext();
+parent.ContinueWith(t => Array.ForEach(t.Result, r => m_lb.Items.Add(r)), ts);
+```
+
+* Tasks and dependencies
+
+Dependecy tree
+* A
+	* B
+		* D
+	* C
+		* E
+		* F
+```cs
+var solution = new Task(() => {
+	var tf = new TaskFactory(
+		TaskcreationOptions.AttachedToParent,
+		TaskContinuationOptions.AttachedToParent);
+
+	var D = tf.StartNew(() => Compile("D"));
+	var E = tf.StartNew(() => Compile("E"));
+	var F = tf.StartNew(() => Compile("F"));
+
+	var B = D.ContinueWith(t => Compile("B"));
+	var C = tf.ContinueWhenAll(new Task[]{E, F}, task => Compile("C"));
+	var A = tf.ContinueWhenAll(new Task[]{B, C}, task => Compile("A"));
+});
+
+solution.Start();
+```
+
 
 
 
