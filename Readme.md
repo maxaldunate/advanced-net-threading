@@ -88,7 +88,7 @@ CancellationTokenSource & ThreadPool.QueueUserWorkItem
 
 ### System.Threading.Tasks or Tasks Parallel Library  
 
-* Getting a Task's Result  
+### Getting a Task's Result  
 
 ```csharp
 // Two equivalents lines
@@ -106,7 +106,7 @@ t.Result //Get the result (Int32) & calls wait internally
 // There are static methods WaitAll & WaitAny returned Task[]
 ```
 
-* Automatically Starting a New Task when another Task Completes
+###  Automatically Starting a New Task when another Task Completes
 
 ```cs
 var t = new Task<Int32>(Compute, 5);
@@ -122,7 +122,7 @@ t.ContinueWith(t => Console.WriteLine("Canceled"),
 		TaskContinuationOptions.OnlyOnCanceled);
 ```
 
-* Cancelling a Task
+###  Cancelling a Task
 
 Tasks can return a value, Int32 in the example. So cancellations throws an exception.  
 ```cs
@@ -137,7 +137,7 @@ private static Int32 Compute(Object state) {
 }
 ```
 
-* A task may start a child tasks
+###  A task may start a child tasks
 ```cs
 var parent = new Task<Int32[]>( () => {
 	var results = new Int32[2];
@@ -165,7 +165,7 @@ var ts = TaskScheduler.FromCurrentSynchronizationContext();
 parent.ContinueWith(t => Array.ForEach(t.Result, r => m_lb.Items.Add(r)), ts);
 ```
 
-* Tasks and dependencies
+###  Tasks and dependencies
 
 Dependecy tree
 * A
@@ -192,20 +192,95 @@ var solution = new Task(() => {
 solution.Start();
 ```
 
+###  System.Threading.Parallel's Static  
+For/ForEach/Invoke Methods  
+* Internally uses Tasks class 
+* Independent operation
+* you don't know the order
+* no return untill operations complete  
+```cs
+//Static For
+for (Int32 i=0; i<1000; i++) DoWork(i);
+Parallel.For(0, 1000, i=>DoWork(i));
 
+//Static ForEach
+for (var item in collection) DoWork(item);
+Parallel.ForEach(collection, item => DoWork(item));
 
+// Invoke parallel works
+DoWork1(); DoWork2(); DoWork3();
+Parallel.Invoke(() => DoWork1(), () => DoWork2(), () => DoWork3());
+```
 
+###  Periodically Performing an Asynchronous Compute-Bound Operation
 
+* Verions 1 to udse a timer   
+¿ Que pasa si "Status" vuelve a ser llamado, 2 segundos despues, pero aún no ha terminado ?  
+```cs
+internal static class TimerDemo {
+	private static Timer s_timer;
+	public static void Main(){
+		Console.WriteLine("Checking status every 2 seconds:");
+		s_timer = new Timer(Status, null, 0, 2000);
+		Console.ReadLine();
+	}
+	private static void Status(Object state){
+		// Chack status code here ....
+	}
+}
 
+```
+Solution or version 2  
+Possible s_timer.Change called before initialization
+```cs
+internal static class TimerDemo {
+	private static Timer s_timer;
+	public static void Main(){
+		Console.WriteLine("Checking status every 2 seconds:");
+		s_timer = new Timer(Status, null, 0, Timeout.infinite); //No 2000
+		Console.ReadLine();
+	}
+	private static void Status(Object state){
+		// Chack status code here ....
 
+		// Have the Time call this method again in 2 seconds
+		s_timer.Change(2000, Timeout.infinite);
+	}
+}
 
+```
 
+Complete solution, version 3: The Good Version
 
+```cs
+internal static class TimerDemo {
+	private static Timer s_timer;
+	public static void Main(){
+		Console.WriteLine("Checking status every 2 seconds:");
+		s_timer = new Timer(Status, null, Timeout.infinite, Timeout.infinite); //Change
+		s_timer.Change(0, Timeout.infinite); //Change
+		Console.ReadLine();
+	}
+	private static void Status(Object state){
+		// Chack status code here ....
 
+		// Have the Time call this method again in 2 seconds
+		s_timer.Change(2000, Timeout.infinite);
+	}
+}
+```
+
+Try not to use thread synchronization to solve race conditions  
 
 
 ## Part 3: I/O-Bound Async Operations  
 [MVA Part 3](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-3-iobound-async-operations-16659?l=DLvEmkitC_4406218965)  
+
+
+
+
+
+
 
 
 ## Part 4: Thread Synchronization Primitives  
