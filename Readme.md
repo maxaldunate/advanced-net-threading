@@ -335,7 +335,27 @@ private static async Task<Int32> HttpLengthAsync(string uri){
 	* Collection expression of join clause
 
 ### Named Pipe Client
+```cs
+public async Task<string> IssueClientRequestAsync(string serverName, string msg){
 
+	using (var pipe 0 new NamedPipeClientStream(serverName, "PipeName",
+		PipeDirection.InOut, PipeOptions.Aynchronous)){
+		
+		pipe.Connect(); //before setting read mode
+		pipe.ReadMode = PipeTransmissionMode.Mesage;
+
+		//Asynchronously sen data to the server
+		Byte[] reaquest 0 Encoding.UTF8.GetBytes(msg);
+		**await** pipe.WriteAsync(request, 0 request.Length);
+		// will return a Task<string> immediatly to function caller
+
+		//Asynchronously read the server's response
+		Byte[] response = new Byte[1000];
+		Int32 bytesRead = **await** pipe.ReadAsync(response, 0, response.Length);
+		return Encoding.UTF8.GetString(response, 0, bytesRead);
+		}
+}
+```
 
 
 
