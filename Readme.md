@@ -377,6 +377,16 @@ context switching, destroying threads, which is really the worst possible scenar
 ### Scalable Servers
 With Async calls to sql server
 
+### Implementing Asynchronous Servers
+* ASP.NET Web Form Page
+* ASP.NET MVC Controller: derive from AsyncController & return Task<ActionResult>
+* ASP.NET HTTP Handler: derive from HttpTaskAsyncHandler & override ProcessRequestAsync
+* WCF Service: implemt as a async function returning Tas or Task<TResult>
+
+### Task.WhenAll
+
+
+
 
 
 
