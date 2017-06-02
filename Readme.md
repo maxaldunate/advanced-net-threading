@@ -298,7 +298,7 @@ In C#, process to read a file with FileStream:
 ### Method using Async/Await
 See demo code at ´Part3_FirstAsyncFunction´
 ```cs
-//async create an state machine with stop & resume states
+//async create an state ma chine with stop & resume states
 private static async Task<Int32> HttpLengthAsync(string uri){
 	var text = await new HttpClient().GetStringAsync(uri);
 	//At await machine stops & resume with the result
@@ -314,8 +314,16 @@ private static async Task<Int32> HttpLengthAsync(string uri){
 }
 ```
 
-Compiler Trasnformation from await to an state machine
+### Compiler Trasnformation from await to an state machine  
+* new structure : `IAsyncStateMachine`
+* `AsyncTaskMethodBuilder<Int32>`
+* `TaskAwaiter<string>`
 
+### Async Function Limitations
+* No async on mehtods
+	* Main... will terminate the process
+	* constructors... return really to garbage collector
+	* props et/set, event add/remove methods
 
 
 
