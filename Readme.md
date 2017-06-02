@@ -276,6 +276,18 @@ Try not to use thread synchronization to solve race conditions
 ## Part 3: I/O-Bound Async Operations  
 [MVA Part 3](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-3-iobound-async-operations-16659?l=DLvEmkitC_4406218965)  
 
+### Synchronous I/O  
+In C#, process to read a file with FileStream:  
+	* Our manage code
+	* Native code
+	* Win32 function ReadFile  
+		** Allocate I/O Request Packet data structure (IRP)  
+	* Thread jumps from user mode to kernel mode
+		** Passes the IRP down into the kernel  
+	* Passes to hard disk queue
+	* Thread blocks while hardware does I/O
+
+
 
 
 
