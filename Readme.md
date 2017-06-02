@@ -320,10 +320,24 @@ private static async Task<Int32> HttpLengthAsync(string uri){
 * `TaskAwaiter<string>`
 
 ### Async Function Limitations
-* No async on mehtods
+* No async on following mehtods
 	* Main... will terminate the process
-	* constructors... return really to garbage collector
-	* props et/set, event add/remove methods
+	* constructors... return really to garbage collector or CLR creating the object
+	* props get/set... cos not allow to mark the get & set like Task<> return type
+	* event add/remove... similar as before
+* No out or ref parameters
+* No await operator in catch, finally or unsafe block
+* No await operator in lock w/thread ownership
+	* No C# lock or Monitor Enter/Exit
+	* Use SemaphoreSlim.WaitAsync instead
+* In a query expression, await only allowed within
+	* First collection expression of the initial from clause
+	* Collection expression of join clause
+
+### Named Pipe Client
+
+
+
 
 
 
