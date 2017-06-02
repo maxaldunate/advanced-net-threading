@@ -338,14 +338,14 @@ private static async Task<Int32> HttpLengthAsync(string uri){
 ```cs
 public async Task<string> IssueClientRequestAsync(string serverName, string msg){
 
-	using (var pipe 0 new NamedPipeClientStream(serverName, "PipeName",
+	using (var pipe = new NamedPipeClientStream(serverName, "PipeName",
 		PipeDirection.InOut, PipeOptions.Aynchronous)){
 		
 		pipe.Connect(); //before setting read mode
 		pipe.ReadMode = PipeTransmissionMode.Mesage;
 
 		//Asynchronously sen data to the server
-		Byte[] reaquest 0 Encoding.UTF8.GetBytes(msg);
+		Byte[] reaquest = Encoding.UTF8.GetBytes(msg);
 		**await** pipe.WriteAsync(request, 0 request.Length);
 		// will return a Task<string> immediatly to function caller
 
@@ -353,12 +353,20 @@ public async Task<string> IssueClientRequestAsync(string serverName, string msg)
 		Byte[] response = new Byte[1000];
 		Int32 bytesRead = **await** pipe.ReadAsync(response, 0, response.Length);
 		return Encoding.UTF8.GetString(response, 0, bytesRead);
+		//** not return to function caller, instead puts in the result of Task
 		}
 }
 ```
 
+### Some Async Functions in the FCL (Fw class library)
+* Stream derived types
+* TextReader derived types
+* TextWriter derived types
+* HttpClient new in 4.5 replace of HttpWebRequest class
+* SqlCommand
+* Tools (WSDL.exe & SvcUtil.exe) producing WS proxies
 
-
+### Non-Scalable Servers
 
 
 
