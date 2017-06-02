@@ -278,14 +278,16 @@ Try not to use thread synchronization to solve race conditions
 
 ### Synchronous I/O  
 In C#, process to read a file with FileStream:  
-	* Our manage code
-	* Native code
-	* Win32 function ReadFile  
-		** Allocate I/O Request Packet data structure (IRP)  
-	* Thread jumps from user mode to kernel mode
-		** Passes the IRP down into the kernel  
-	* Passes to hard disk queue
-	* Thread blocks while hardware does I/O
+* Our manage code
+* Native code
+* Win32 function ReadFile
+	* Allocate I/O Request Packet data structure (IRP)
+* Thread jumps from user mode to kernel mode
+	* Passes the IRP down into the kernel
+* Passes to hard disk queue
+* Thread blocks while hardware does I/O
+
+
 
 
 
