@@ -367,8 +367,15 @@ public async Task<string> IssueClientRequestAsync(string serverName, string msg)
 * Tools (WSDL.exe & SvcUtil.exe) producing WS proxies
 
 ### Non-Scalable Servers
-
-
+Browser-ASP.NET Server-SQL Server  
+Blocking threads till max thread support for a single process (1.530)  
+Context switching at response
+**Conclussion**
+This Architecture the server really spends most os its time  
+creating threads, context switching, destroying threads, which is really the worst possible scenario.  
+ 
+### Scalable Servers
+With Async calls to sql server
 
 
 
