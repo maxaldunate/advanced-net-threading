@@ -276,7 +276,7 @@ Try not to use thread synchronization to solve race conditions
 ## Part 3: I/O-Bound Async Operations  
 [MVA Part 3](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-3-iobound-async-operations-16659?l=DLvEmkitC_4406218965)  
 
-### Synchronous I/O  
+### Synchronous I/O
 In C#, process to read a file with FileStream:  
 * Our manage code
 * Native code
@@ -286,8 +286,35 @@ In C#, process to read a file with FileStream:
 	* Passes the IRP down into the kernel
 * Passes to hard disk queue
 * Thread blocks while hardware does I/O
+* When completes all the way up the thread stack
 
+### Asynchronous I/O with XxxAsync
+* FileStream (..., FileOptions.Asynchronous)
+	* Don't block thread requesting I/O
+	* Put completed IRP in ThreadPool
+	* `Async methods` return a task I/O operation will complete in the future
+	* `await` keyword
 
+### Method using Async/Await
+See demo code at ´Part3_FirstAsyncFunction´
+```cs
+//async create an state machine with stop & resume states
+private static async Task<Int32> HttpLengthAsync(string uri){
+	var text = await new HttpClient().GetStringAsync(uri);
+	//At await machine stops & resume with the result
+	return text.Length
+	//return put the value in the Result methos of the task
+}
+
+//Equivalent
+private static async Task<Int32> HttpLengthAsync(string uri){
+	Task<string> task = new HttpClient().GetStringAsync(uri);
+	vat text = await task;
+	return text.Length;
+}
+```
+
+Compiler Trasnformation from await to an state machine
 
 
 
