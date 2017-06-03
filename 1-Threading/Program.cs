@@ -24,7 +24,10 @@ public static class Program {
 
         //Part3_NamedPipeClient.Run();
         //Part3_WhenAll.Run();
-        Part3_WhenAny.Run();
+        //Part3_WhenAny.Run();
+
+        var x = new Part3_VoidReturnType();
+        x.Subscribe();
 
 
     }

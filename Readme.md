@@ -419,6 +419,23 @@ Processing resualts at each one are complete
         }
     }
 ```
+### Async Function Return Types & WinRT Deferrals
+Possible void return for async, not just Task or Task<TResult>  
+Just for the event handlers scenarios  
+Strongly discouraged  
+```cs
+	async void OnSuspending(object sender, SuspendingEventArgs e) {
+        // A dewferral tells Windows you're returning but not done
+        var deferral = e.Suspendingoperation.GetDeferral();
+        // TODO: perform async operation(s) here ...
+        var result = await xxxAsync();
+        deferral.Complete();  //Now, tell Windows we're done
+	}
+```
+[Deferrals](https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.background.backgroundtaskdeferral)  
+Telling windows I'm returning but I'm not done  
+
+
 
 
 
