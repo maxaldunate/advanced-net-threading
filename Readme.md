@@ -392,6 +392,8 @@ With Async calls to sql server
 
 
 
+
+
 ## Part 4: Thread Synchronization Primitives  
 [MVA Part 4](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-4-thread-synchronization-primitives-16660?l=1oGCZnitC_8406218965)  
 
