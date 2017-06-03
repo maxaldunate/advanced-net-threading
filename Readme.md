@@ -391,7 +391,10 @@ public static async Task Go(){
 	for(Int32 n=0; n<requests.Capacity; n++)
 		requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
 
-	string[] responses = await Task.WhenAll(requests);
+	string[] responses = <b>await</b> Task.WhenAll(requests);
+	string[] responses = `**`await`**` Task.WhenAll(requests);
+	string[] responses = ``**``await``**`` Task.WhenAll(requests);
+	string[] responses = ```**```await```**``` Task.WhenAll(requests);
 
 	for(Int32 n=0; n<responses.Length; n++)
 		Console.WriteLine(responses[n]);
