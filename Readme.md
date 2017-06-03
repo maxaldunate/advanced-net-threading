@@ -386,7 +386,7 @@ With Async calls to sql server
 * WCF Service: implemt as a async function returning Tas or Task<TResult>
 
 ### Task.WhenAll
-Multiple I/O request and continue when all finished
+Multiple I/O request and continue when all finished  
 ```cs
     public static async Task Go()
     {
@@ -401,6 +401,25 @@ Multiple I/O request and continue when all finished
     }
 ```
 ### Task.WhenAny
+Processing resualts at each one are complete  
+```cs
+    public static async Task Go(int loops)
+    {
+        var requests = new List<Task<string>>(loops);
+        for (Int32 n = 0; n < requests.Capacity; n++)
+            requests.Add(Part3_NamedPipeClient
+                .IssueClientRequestAsync("localhost", "Request #" + n));
+
+        // Continue as EACH task completes
+        while (requests.Count > 0)
+        {
+            var responseTask = await Task.WhenAny(requests);
+            requests.Remove(responseTask);
+            Console.WriteLine(responseTask.Result);
+        }
+    }
+```
+
 
 
 

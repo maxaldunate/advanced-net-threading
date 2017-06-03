@@ -24,6 +24,8 @@ public static class Program {
 
         //Part3_NamedPipeClient.Run();
         //Part3_WhenAll.Run();
+        Part3_WhenAny.Run();
+
 
     }
 
