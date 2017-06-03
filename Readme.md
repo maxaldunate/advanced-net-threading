@@ -392,11 +392,12 @@ public static async Task Go(){
 		requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
 
 ```
-	`string[] responses = <b>await</b> Task.WhenAll(requests);`
-	`string[] responses = `**`await`**` Task.WhenAll(requests);`
-```cs
-	string[] responses = ```**```await```**``` Task.WhenAll(requests);
+		`string[] responses = `**`await`**` Task.WhenAll(requests);`
 
+		<pre>
+		string[] responses = <b>await</b> Task.WhenAll(requests);
+		</pre>
+```cs
 	for(Int32 n=0; n<responses.Length; n++)
 		Console.WriteLine(responses[n]);
 }
