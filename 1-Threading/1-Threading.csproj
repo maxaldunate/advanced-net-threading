@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="samples\Part1_AsyncDelegateExample1.cs" />
     <Compile Include="samples\Part1_Overhead.cs" />
+    <Compile Include="samples\Part3_NamedPipeClient.cs" />
+    <Compile Include="samples\Part3_WhenAll.cs" />
     <Compile Include="samples\Part3_FirstAsyncFunction.cs" />
     <Compile Include="samples\Part2_CalcMaxActiveThreads.cs" />
     <Compile Include="samples\Part1_Responsiveness.cs" />

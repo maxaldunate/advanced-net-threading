@@ -20,7 +20,10 @@ public static class Program {
        //Part2_CalcMaxActiveThreads.Run(3, true);
        //Part2_CalcMaxActiveThreads.Run(1, false);
 
-       Part3_FirstAsyncFunction.Run();
+       //Part3_FirstAsyncFunction.Run();
+
+        //Part3_NamedPipeClient.Run();
+        //Part3_WhenAll.Run();
 
     }
 

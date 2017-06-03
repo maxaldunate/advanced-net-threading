@@ -336,26 +336,28 @@ private static async Task<Int32> HttpLengthAsync(string uri){
 
 ### Named Pipe Client
 ```cs
-public async Task<string> IssueClientRequestAsync(string serverName, string msg){
+    public static async Task<string> IssueClientRequestAsync(string serverName, string msg)
+    {
 
-	using (var pipe = new NamedPipeClientStream(serverName, "PipeName",
-		PipeDirection.InOut, PipeOptions.Aynchronous)){
-		
-		pipe.Connect(); //before setting read mode
-		pipe.ReadMode = PipeTransmissionMode.Mesage;
+        using (var pipe = new NamedPipeClientStream(serverName, "PipeName",
+            PipeDirection.InOut, PipeOptions.Asynchronous))
+        {
 
-		//Asynchronously sen data to the server
-		Byte[] reaquest = Encoding.UTF8.GetBytes(msg);
-		**await** pipe.WriteAsync(request, 0 request.Length);
-		// will return a Task<string> immediatly to function caller
+            pipe.Connect(); //before setting read mode
+            pipe.ReadMode = PipeTransmissionMode.Message;
 
-		//Asynchronously read the server's response
-		Byte[] response = new Byte[1000];
-		Int32 bytesRead = **await** pipe.ReadAsync(response, 0, response.Length);
-		return Encoding.UTF8.GetString(response, 0, bytesRead);
-		//** not return to function caller, instead puts in the result of Task
-		}
-}
+            //Asynchronously sen data to the server
+            Byte[] request = Encoding.UTF8.GetBytes(msg);
+            await pipe.WriteAsync(request, 0, request.Length);
+            // will return a Task<string> immediatly to function caller
+
+            //Asynchronously read the server's response
+            Byte[] response = new Byte[1000];
+            Int32 bytesRead = await pipe.ReadAsync(response, 0, response.Length);
+            return Encoding.UTF8.GetString(response, 0, bytesRead);
+            //** not return to function caller, instead puts in the result of Task
+        }
+    }
 ```
 
 ### Some Async Functions in the FCL (Fw class library)
@@ -386,29 +388,19 @@ With Async calls to sql server
 ### Task.WhenAll
 Multiple I/O request and continue when all finished
 ```cs
-public static async Task Go(){
-	var requests = new List<Task<string>>(10000);
-	for(Int32 n=0; n<requests.Capacity; n++)
-		requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
+    public static async Task Go()
+    {
+        var requests = new List<Task<string>>(10000);
+        for (Int32 n = 0; n < requests.Capacity; n++)
+            requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
 
+        string[] responses = await Task.WhenAll(requests);
+
+        for (Int32 n = 0; n < responses.Length; n++)
+            Console.WriteLine(responses[n]);
+    }
 ```
-		`string[] responses = `**`await`**` Task.WhenAll(requests);`
-
-<pre>
-string[] responses = <b>await</b> Task.WhenAll(requests);
-</pre>
-
-<code>string[] responses = **await** Task.WhenAll(requests);</code>
-
-
-```cs
-	for(Int32 n=0; n<responses.Length; n++)
-		Console.WriteLine(responses[n]);
-}
-```
-
-
-
+### Task.WhenAny
 
 
 
