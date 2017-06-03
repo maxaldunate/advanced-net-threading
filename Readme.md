@@ -384,6 +384,19 @@ With Async calls to sql server
 * WCF Service: implemt as a async function returning Tas or Task<TResult>
 
 ### Task.WhenAll
+Multiple I/O request and continue when all finished
+```csharp
+public static async Task Go(){
+	var requests = new List<Task<string>>(10000);
+	for(Int32 n=0; n<requests.Capacity; n++)
+		requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
+
+	string[] responses = await Task.WhenAll(requests);
+
+	for(Int32 n=0; n<responses.Length; n++)
+		Console.WriteLine(responses[n]);
+}
+```
 
 
 
