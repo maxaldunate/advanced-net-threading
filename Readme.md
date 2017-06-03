@@ -394,9 +394,13 @@ public static async Task Go(){
 ```
 		`string[] responses = `**`await`**` Task.WhenAll(requests);`
 
-		<pre>
-		string[] responses = <b>await</b> Task.WhenAll(requests);
-		</pre>
+<pre>
+string[] responses = <b>await</b> Task.WhenAll(requests);
+</pre>
+
+<code>string[] responses = **await** Task.WhenAll(requests);</code>
+
+
 ```cs
 	for(Int32 n=0; n<responses.Length; n++)
 		Console.WriteLine(responses[n]);
