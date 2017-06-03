@@ -385,15 +385,16 @@ With Async calls to sql server
 
 ### Task.WhenAll
 Multiple I/O request and continue when all finished
-```csharp
+```cs
 public static async Task Go(){
 	var requests = new List<Task<string>>(10000);
 	for(Int32 n=0; n<requests.Capacity; n++)
 		requests.Add(IssueClientRequestAsync("localhost", "Request #" + n));
 
-	string[] responses = <b>await</b> Task.WhenAll(requests);
-	string[] responses = `**`await`**` Task.WhenAll(requests);
-	string[] responses = ``**``await``**`` Task.WhenAll(requests);
+```
+	`string[] responses = <b>await</b> Task.WhenAll(requests);`
+	`string[] responses = `**`await`**` Task.WhenAll(requests);`
+```cs
 	string[] responses = ```**```await```**``` Task.WhenAll(requests);
 
 	for(Int32 n=0; n<responses.Length; n++)
