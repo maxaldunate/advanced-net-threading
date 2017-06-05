@@ -439,8 +439,12 @@ Telling windows I'm returning but I'm not done
 Example at Part3_06_AsyncLambdaExpressions.cs  
 
 ### Await Begin/end Methods
+Example at Part3_07_AwaitBeginEnd.cs
 
+### Asynchronous Event Handlers 
+### Tic-Tac-Toe Game Loop Logic
 
+01:04 horas
 
 
 
