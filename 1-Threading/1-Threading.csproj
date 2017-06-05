@@ -46,11 +46,12 @@
   <ItemGroup>
     <Compile Include="samples\Part1_AsyncDelegateExample1.cs" />
     <Compile Include="samples\Part1_Overhead.cs" />
-    <Compile Include="samples\Part3_NamedPipeClient.cs" />
-    <Compile Include="samples\Part3_VoidReturnType.cs" />
-    <Compile Include="samples\Part3_WhenAny.cs" />
-    <Compile Include="samples\Part3_WhenAll.cs" />
-    <Compile Include="samples\Part3_FirstAsyncFunction.cs" />
+    <Compile Include="samples\Part3_02_NamedPipeClient.cs" />
+    <Compile Include="samples\Part3_06_AsyncLambdaExpressions.cs" />
+    <Compile Include="samples\Part3_05_VoidReturnType.cs" />
+    <Compile Include="samples\Part3_04_WhenAny.cs" />
+    <Compile Include="samples\Part3_03_WhenAll.cs" />
+    <Compile Include="samples\Part3_01_FirstAsyncFunction.cs" />
     <Compile Include="samples\Part2_CalcMaxActiveThreads.cs" />
     <Compile Include="samples\Part1_Responsiveness.cs" />
     <Compile Include="Program.cs" />

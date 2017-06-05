@@ -435,6 +435,11 @@ Strongly discouraged
 [Deferrals](https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.background.backgroundtaskdeferral)  
 Telling windows I'm returning but I'm not done  
 
+### Async Lambda Expressions
+Example at Part3_06_AsyncLambdaExpressions.cs  
+
+### Await Begin/end Methods
+
 
 
 
