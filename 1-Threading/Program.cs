@@ -26,8 +26,13 @@ public static class Program {
         //Part3_WhenAll.Run();
         //Part3_WhenAny.Run();
 
-        var x = new Part3_VoidReturnType();
-        x.Subscribe();
+        //var x = new Part3_VoidReturnType();
+        //x.Subscribe();
+
+        //var x = new Part3_06_AsyncLambdaExpressions();
+        //x.Subscribe();
+
+        Part3_07_AwaitBeginEnd.Run();
 
 
     }

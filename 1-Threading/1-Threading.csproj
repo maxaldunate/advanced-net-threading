@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="samples\Part1_AsyncDelegateExample1.cs" />
     <Compile Include="samples\Part1_Overhead.cs" />
+    <Compile Include="samples\Part3_07_AwaitBeginEnd.cs" />
     <Compile Include="samples\Part3_02_NamedPipeClient.cs" />
     <Compile Include="samples\Part3_06_AsyncLambdaExpressions.cs" />
     <Compile Include="samples\Part3_05_VoidReturnType.cs" />
