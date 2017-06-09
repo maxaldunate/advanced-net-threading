@@ -443,8 +443,15 @@ Example at Part3_07_AwaitBeginEnd.cs
 
 ### Asynchronous Event Handlers 
 ### Tic-Tac-Toe Game Loop Logic
-
-01:04 horas
+* Initializre
+* Wait for PointerPressed event
+* if empty..
+* if not 3 ina  row ...
+* switch X->O or O->X 
+* if 3 in a row ... winner dialog & re-Initialize  
+   
+* The game loop is a state machine  
+	**Like async functions**  
 
 
 
