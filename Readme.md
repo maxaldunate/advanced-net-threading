@@ -61,7 +61,7 @@ from Wintellect
 ## Part 2: Compute-Bound Async Operations  
 [MVA Part 2](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-2-computebound-async-operations-16658?l=fG7K1fitC_2206218965)  
 
-### Don't block threads **  
+### Don't block threads
 * You tempted to create more threads  
 * Garbagge collector have to suspend all threads  
 * Degrade debugging performance  
@@ -441,8 +441,7 @@ Example at Part3_06_AsyncLambdaExpressions.cs
 ### Await Begin/end Methods
 Example at Part3_07_AwaitBeginEnd.cs
 
-### Asynchronous Event Handlers 
-### Tic-Tac-Toe Game Loop Logic
+### Asynchronous Event Handlers. Tic-Tac-Toe Game Loop Logic
 * Initializre
 * Wait for PointerPressed event
 * if empty..
@@ -451,10 +450,47 @@ Example at Part3_07_AwaitBeginEnd.cs
 * if 3 in a row ... winner dialog & re-Initialize  
    
 * The game loop is a state machine  
-	**Like async functions**  
+  **Like async functions!!!**  
 
+**Interesting example to implement asynchronous state machines**  
+```cs
+namespace Wintellect.AwaitableEvent {
+   public sealed class AwaitableEvent<TEventArgs> {
+      private TaskCompletionSource<AwaitableEventArgs<TEventArgs>> m_tcs;
 
+      // Returns an (awaitable) Task; set when EventHandler is invoked
+      public Task<AwaitableEventArgs<TEventArgs>> RaisedAsync(Object state = null) {
+         if (m_tcs == null)
+            m_tcs = new TaskCompletionSource<AwaitableEventArgs<TEventArgs>>(state);
+         return m_tcs.Task;
+      }
 
+      // Invoked when event is raised
+      public void Handler(Object sender, TEventArgs eventArgs) {
+         if (m_tcs == null) return;
+         // We use the temporary variable (tcs) & reset m_tcs to null before calling
+         // SetResult because SetResult returns from await immediately which may
+         // call RaisedAsync again and we need this to create a new TaskCompletionSource
+         var tcs = m_tcs; m_tcs = null;
+         tcs.SetResult(new AwaitableEventArgs<TEventArgs>(sender, eventArgs));
+      }
+   }
+
+   public sealed class AwaitableEventArgs<TEventArgs> {
+      public readonly Object Sender;
+      public readonly TEventArgs Args;
+      internal AwaitableEventArgs(Object sender, TEventArgs args) {
+         Sender = sender;
+         Args = args;
+      }
+   }
+}
+```
+
+Interesting for ussagge...  
+`for (Boolean winner = false; !winner; ) {}`
+
+### Applications & their Threading models  
 
 
 
