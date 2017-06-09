@@ -490,11 +490,32 @@ namespace Wintellect.AwaitableEvent {
 Interesting for ussagge...  
 `for (Boolean winner = false; !winner; ) {}`
 
-### Applications & their Threading models  
+### Applications Models & their Threading models  
+
+* Apps impose their own threading model
+  * CUI (Console User Interface) & NT Services no model (free threaded)
+  * GUI: windows must be modified by thread that creates it
+  * ASP.NET: WebForm, MVC, web services: impersonates client's culture/identity
+    [Set the Culture and UI Culture for ASP.NET Web Page Globalization](http://msdn.microsoft.com/en-us/library/bz9tc508.aspx)
+* SynchronizationCOntext-derived objects connect and application model to its threading model
+* The await operator captures the calling SC object and ensures that any continuation occurs via this SC object
+  * For application code, this is usually good
+  * For class library code, this is usually bad
+    Bad if you try to use that library in different kind of apps
 
 
+### GUI App deadlocks
 
+Solved with `ConfigureAwait(false);` not calling SynchronizationContext object and improve performance
 
+Another way: Task.Run Forces use of Thread Pool Threads
+
+### Not using .NET 4.5 yet?
+
+* Pre-release Async Targeting Pack (VS 2012)  
+  * Nuget pkg Microsoft.Bcl.Async
+  * Supports fwk 4.0
+* Jeffrey Richter's Power Threading library contains `AsyncEnumerator` (VS 2005)
 
 ## Part 4: Thread Synchronization Primitives  
 [MVA Part 4](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-4-thread-synchronization-primitives-16660?l=1oGCZnitC_8406218965)  
