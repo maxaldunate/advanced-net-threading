@@ -520,6 +520,58 @@ Another way: Task.Run Forces use of Thread Pool Threads
 ## Part 4: Thread Synchronization Primitives  
 [MVA Part 4](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-4-thread-synchronization-primitives-16660?l=1oGCZnitC_8406218965)  
 
+### Thread Synchronization Mindset
+
+* at the same time
+* error prone: no force to acquire permission
+* bad perf: requesting permission is slow & other threads stop running
+* increase overhead: blocking threads cause creation of new threads
+```cs
+private sealed class LinkedList{
+	private var m_lock = new SomeKindOfLock();
+	private Node m_head;
+
+	public void Add(Node node){
+		m_lock.Acquire();
+		newNode.m_next = m_head;
+		m_head = newNode;
+		m_lock.Release();
+	}
+}
+```
+**How to avoid**  
+* Prefer unshared objects
+  * heap objects
+  * reead-only objects (immutables like string)
+  * delegates
+  * builders 
+  * value types
+
+  ** It's only if the thread that creates the object passes a reference to other thread**
+
+### Class Libraries & Thread Safety
+
+* FCL (Framework Class Library) guarantees static methods are thread safe
+* FCL doesn't guarantee instance methods are thread safe
+  * If the porpouse of the object is to sinchronize thread, is thread safe
+   * CancellationTokenSource class
+   * Class wrapping any kind of locks like Monitor class enter and leave methods
+   * Reader-Writer lock slim acquire & release methods
+* Your own class libraries should mimic these rules
+
+### CLR's Memory Model: Volatile Methods
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Part 5: Thread Synchronization Locks
 [MVA Part 5](https://mva.microsoft.com/en-US/training-courses/advanced-net-threading-part-5-thread-synchronization-locks-16661?l=A3VXnpitC_9006218965)  
